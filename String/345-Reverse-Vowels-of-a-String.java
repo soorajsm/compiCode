@@ -18,9 +18,7 @@ class Solution {
                     j--;
                 }
         }
-        StringBuilder sb=new StringBuilder();
-        for(char c:str)
-            sb.append(c);
-        return sb.toString();
+        s=new String(str);
+        return s;
     }
 }
