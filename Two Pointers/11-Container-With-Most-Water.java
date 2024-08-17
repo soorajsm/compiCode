@@ -4,12 +4,17 @@ class Solution {
         int water=Integer.MIN_VALUE;
         while(i<j)
         {
-            int min=Math.min(a[i],a[j]);
-            water=Math.max(water,Math.abs(i-j)*min);
+
             if(a[i]<=a[j])
+            {
+                water=Math.max(water,(j-i)*a[i]);
                 i++;
+            }
             else
+            {
+                water=Math.max(water,(j-i)*a[j]);
                 j--;
+            }
         } 
         return water;
     }
