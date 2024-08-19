@@ -3,25 +3,17 @@ class Solution {
         if (s == null || s.length() < 3)
             return 0;
         int end=0,count=0;
-        StringBuilder sb=new StringBuilder();
-        for(int start=0;start<s.length();start++)
+        for(int start=0;start<s.length()-2;start++)
         {
-            sb.append(s.charAt(start));
-            if((start-end+1)>=3)
-            {
-                if(isGoodStr(sb.toString()))
-                    count++;
-
-                sb.deleteCharAt(0);
-                end++;
-            }
+           if(isGoodStr(s,start))
+                count++;
         }
         return count;
     }
 
-    public boolean isGoodStr(String s)
+    public boolean isGoodStr(String s,int i)
     {
-        if(s.charAt(0)!=s.charAt(1) && s.charAt(0)!=s.charAt(2) && s.charAt(1)!=s.charAt(2))
+        if(s.charAt(i)!=s.charAt(i+1) && s.charAt(i)!=s.charAt(i+2) && s.charAt(i+1)!=s.charAt(i+2))
             return true;
         return false;
     }
