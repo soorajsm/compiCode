@@ -1,7 +1,7 @@
 class Solution {
     public int findComplement(int num) {
         
-        // simple and efficient approach
+        // simple and efficient approach 0ms
 
         int mask=0;
         int temp=num;
