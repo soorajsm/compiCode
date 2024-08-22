@@ -7,10 +7,10 @@ class Solution {
         int temp=num;
         while(temp>0)
         {
-            mask=(mask<<1) | 1;
-            temp>>=1;
+            mask=(mask<<1) | 1; //creating mask i.e creating set of 1s equal to nums size to perform xor with  
+            temp>>=1;           //num so we get the compliment  ex: 101^111 = 010
         }
-        return num^mask;
+        return num^mask;    //xor operation
 
 
 
