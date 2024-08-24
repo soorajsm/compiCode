@@ -3,19 +3,17 @@ class Solution {
         if(w1.length()!=w2.length())
             return false;
 
-        int freq1[]=new int[26];
-        int freq2[]=new int[26];
-        boolean seen[]=new boolean[26];
-        for(char i:w1.toCharArray()){
-            freq1[i-97]++;
-            seen[i-97]=true;
-        }
+        int[] freq1=new int[26],freq2=new int [26] ;
+        byte [] ch1=w1.getBytes(),ch2=w2.getBytes();
+
+        for(byte i:ch1)
+            freq1[i-'a']++;
         
-        for(char i:w2.toCharArray())
+        for(byte i:ch2)
         {
-            if(!seen[i-97])
+            if(freq1[i-'a']==0)
                 return false;
-            freq2[i-97]++;
+            freq2[i-'a']++;
         }
         Arrays.sort(freq1);
         Arrays.sort(freq2);
