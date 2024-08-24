@@ -3,32 +3,31 @@ class Solution {
         if(w1.length()!=w2.length())
             return false;
 
-        Map<Character,Integer>map1=new HashMap<>();  
-        Map<Character,Integer>map2=new HashMap<>();   
-        Set<Character>set=new HashSet<>(); 
+        int freq1[]=new int[26];
+        int freq2[]=new int[26];
+        boolean seen[]=new boolean[26];
         for(char i:w1.toCharArray()){
-            map1.put(i,map1.getOrDefault(i,0)+1);
-            set.add(i);
+            freq1[i-97]++;
+            seen[i-97]=true;
         }
         
         for(char i:w2.toCharArray())
         {
-            map2.put(i,map2.getOrDefault(i,0)+1);
-            set.remove(i);
+            if(!seen[i-97])
+                return false;
+            freq2[i-97]++;
         }
-        if(!set.isEmpty())
-            return false;
+        Arrays.sort(freq1);
+        Arrays.sort(freq2);
 
-        List<Integer>list=new ArrayList<>();
-        for(int i:map1.values())
-            list.add(i);
+        for(int i=25;i>=0;i--)
+        {
+            if(freq1[i]!=freq2[i])
+                return false;
+            if(freq1[i]==0)
+                return true;
+        }
 
-        for(int i:map2.values())
-            list.remove(Integer.valueOf(i));
-
-        if(list.isEmpty())
-            return true;
-        
-        return false;
+        return true;
     }
 }
