@@ -13,15 +13,16 @@ public class Solution {
     public boolean hasCycle(ListNode head) {
         if(head==null)
             return false;
-        ListNode cur=head;
-        Set<ListNode>set=new HashSet<>();
-        while(cur.next!=null)
+
+        ListNode slowpointer=head;
+        ListNode fastpointer=head;
+
+        while(fastpointer!=null && fastpointer.next!=null)
         {
-            if(!set.add(cur))
-            {
+            slowpointer=slowpointer.next;
+            fastpointer=fastpointer.next.next;
+            if(slowpointer==fastpointer)
                 return true;
-            }
-            cur=cur.next;
         }
         return false;
     }
