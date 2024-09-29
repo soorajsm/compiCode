@@ -11,25 +11,15 @@
  */
 public class Solution {
     public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+        if(headA==null || headB==null)
+        return null;
         ListNode apointer=headA;
         ListNode bpointer=headB;
-        Set<ListNode>set=new HashSet<>();
-        while(apointer!=null && bpointer!=null)
+        while(apointer!=bpointer)
         {
-            while(apointer!=null)
-            {
-                if(!set.add(apointer))
-                    return apointer;
-                apointer=apointer.next;
-            }
-
-            while(bpointer!=null)
-            {
-                if(!set.add(bpointer))
-                    return bpointer;
-                bpointer=bpointer.next;
-            }
+            apointer=(apointer==null)?headB:apointer.next;
+            bpointer=(bpointer==null)?headA:bpointer.next;
         }
-        return null;
+        return apointer;
     }
 }
