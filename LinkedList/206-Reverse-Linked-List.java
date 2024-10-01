@@ -14,21 +14,17 @@ class Solution {
             return null;
         else if(head.next==null)
             return head;
-        ListNode curr=head;
-        Stack<ListNode>stack=new Stack<>();
+        ListNode prev=head;
+        ListNode curr=head.next;
+        ListNode front=curr.next;
+        prev.next=null;
         while(curr!=null)
         {
-            stack.push(curr);
-            curr=curr.next;
+            curr.next=prev;
+            prev=curr;
+            curr=front;
+            front=(front==null)?front:front.next;
         }
-        ListNode thead=stack.pop();
-        ListNode tcurr=thead;
-        while(!stack.isEmpty())
-        {
-            tcurr.next=stack.pop();
-            tcurr=tcurr.next;
-        }
-        tcurr.next=null;
-        return thead;
+        return prev;
     }
 }
