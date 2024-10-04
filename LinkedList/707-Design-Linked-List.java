@@ -8,10 +8,12 @@ class MyLinkedList {
     {
         int data;
         Node next;
+        Node prev;
         public Node(int data) 
         {
             this.data=data;
             this.next=null;
+            this.prev=null;
         }
     
     }
@@ -46,6 +48,7 @@ class MyLinkedList {
             return;
         }
         newNode.next=head;
+        head.prev=newNode;
         head=newNode;
     }
     
@@ -64,6 +67,7 @@ class MyLinkedList {
             curr=curr.next;
         }
         curr.next=newNode;
+        newNode.prev=curr;
         
     }
     
@@ -88,9 +92,12 @@ class MyLinkedList {
             curr = curr.next;
             count++;
         }
+        
 
         newNode.next=curr.next;
+        if(curr.next!=null)curr.next.prev=newNode;
         curr.next=newNode;
+        newNode.prev=curr;
         
     }
     
@@ -118,6 +125,7 @@ class MyLinkedList {
 
         if (curr.next != null) {
             curr.next = curr.next.next;
+            if(curr.next!=null)curr.next.prev=curr;
         }
     }
 }
