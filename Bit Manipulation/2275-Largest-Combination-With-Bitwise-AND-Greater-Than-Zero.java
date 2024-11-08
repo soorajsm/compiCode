@@ -1,16 +1,15 @@
 class Solution {
     public int largestCombination(int[] candidates) {
         int freq[]=new int[24];
-        for(int i:candidates)
+        for(int ele:candidates)
         {
-            String bs=Integer.toBinaryString(i);
-            int k=23,j=bs.length()-1;
-            while(j>=0)
+            int i=23;
+            while(ele>0)
             {
-                if(bs.charAt(j)=='1')
-                    freq[k]++;
-                k--;
-                j--;
+                if((ele&1)==1)
+                    freq[i]++;
+                i--;
+                ele>>=1;
             }
         }
         Arrays.sort(freq);
