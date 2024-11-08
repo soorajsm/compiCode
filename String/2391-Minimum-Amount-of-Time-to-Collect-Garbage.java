@@ -1,8 +1,13 @@
 class Solution {
     public int garbageCollection(String[] garbage, int[] travel) {
-        int res=0;
+        int sum=0,res=0;
+        int freq[]=new int[14];
+        for(String s:garbage)
+        {
+            sum+=s.length();
+        }
         String allgar[]={"M","P","G"};
-        res+=garbage[0].length();
+        res+=sum;
         for(String s:allgar)
         {
             int temp=0;
@@ -10,7 +15,7 @@ class Solution {
             {
                 if(garbage[i].contains(s))
                 {
-                    res+=travel[i-1]+temp+countLetters(garbage[i],s);
+                    res+=travel[i-1]+temp;
                     temp=0; 
                 }
                 else
@@ -20,14 +25,4 @@ class Solution {
         return res;
     }
 
-    public int countLetters(String word,String s)
-    {
-        int count=0;
-        for(char str:word.toCharArray())
-        {
-            if(str==s.charAt(0))
-                count++;
-        }
-        return count;
-    }
 }
