@@ -1,54 +1,42 @@
 class Solution {
     public int[] searchRange(int[] a, int target) {
         int n=a.length-1;
-        int l=0,r=n,i=0;
-        int res[]={-1,-1};
+        int low=0,high=n,i=0;
+        int ans[]={-1,-1};
         if(n<0)
-            return res;
-        
-        if(n==0)
-          {  
-            if(a[0]==target)
+            return ans;
+
+        while(low<=high)
+        {
+            int mid=low+(high-low)/2;
+            if(a[mid]==target)
             {
-                res[0]=0;
-                res[1]=0;
+                ans[0]=mid;
+                high=mid-1;
             }
-            return res;
-        }
-    
-        while(l<r)
-        {
-            int mid=l+(r-l)/2;
-            if(a[mid]<target)
-                l=mid+1;
+            else if(a[mid]>target)
+                high=mid-1;
             else
-                r=mid;
+                low=mid+1;
         }
 
-        
-
-        if(a[l]==target)
-            res[i++]=l;
-
-        l=0;r=n;
-
+        low=0;high=n;
             
-        while(l<r)
+        while(low<=high)
         {
-            int mid=l+(r-l+1)/2;
-
-            if(a[mid]>target)
-                r=mid-1;
+            int mid=low+(high-low)/2;
+            if(a[mid]==target)
+            {
+                ans[1]=mid;
+                low=mid+1;
+            }
+            else if(a[mid]>target)
+                high=mid-1;
             else
-                l=mid;
+                low=mid+1;
         }
         
 
-
-        if(a[l]==target)
-            res[i++]=l;
-
-
-        return res;
+        return ans;
     }
 }
