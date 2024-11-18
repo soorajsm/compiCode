@@ -7,7 +7,7 @@ class Solution {
             mid=low+(high-low)/2;
             if(high==mid)
                 return a[mid];
-            else if(a[high]<a[mid] && a[high]<a[low])
+            else if(a[mid]>a[high])
                 low=mid+1;
             else
                 high=mid;
