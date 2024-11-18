@@ -11,8 +11,6 @@ class Solution {
             {
                 low+=1;
                 high-=1;
-                continue;
-
             }
 
             else if(a[low]<=a[mid])
