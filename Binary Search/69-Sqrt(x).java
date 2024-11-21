@@ -4,24 +4,24 @@ class Solution {
         //using binery search
         if(x<2)
             return x;
-         int l=0,h=x;
-        while(l<=h)
+        int ans=0;
+        int low=1,high=x/2;
+        while(low<=high)
         {
-            int m=l+(h-l)/2;
-            if(x/m==m)
-                return m;
-            else if(x/m<m)
-                h=m-1;
+            int mid=low+(high-low)/2;
+            if(x/mid>=mid)
+            {
+                ans=mid;
+                low=mid+1;
+            }
             else
-                l=m+1;
-
+                high=mid-1;
         }
-
-        return h;
+        return ans; 
     }
 }
 
-    //    Simple code but time complexity is more
+    //    Bruteforce
 
     //     if(x==0)
     //         return 0;
