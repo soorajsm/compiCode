@@ -1,0 +1,71 @@
+import java.util.Arrays;
+
+class Node {
+    int data;
+    Node next;
+    Node(int d) {
+        data = d;
+        next = null;
+    }
+}
+
+class SinglyLinkedList {
+  
+  Node root;
+  Node last;
+  
+  class Node
+  {
+    	int data;
+    	Node next;
+    
+    	Node(int val)
+        {
+          	this.data=val;
+        }
+    
+    	Node(int val,Node next)
+        {
+          	this.data=val;
+          	this.next=next;
+        }
+  }
+  
+  public void insertEnd(int ele)
+  {
+  		Node newNode=new Node(ele);
+    	if(root==null)
+        {
+        	root=newNode;
+          	last=root;
+          	return;
+        }
+
+          last.next=newNode;
+          last=newNode;
+  }
+
+    public static Node arrayToList(int[] arr) {
+        SinglyLinkedList list= new SinglyLinkedList();
+        for (int i = 0; i < arr.length; i++) {
+            list.insertEnd(arr[i]);
+        }
+        return list.root;
+    }
+
+    public static void display(Node root) {
+        System.out.print("LinkedList is ");
+        while (root != null) {
+            System.out.print(root.data + "-->");
+            root = root.next;
+        }
+    }
+
+    // Driver code
+    public static void main(String[] args) {
+        int[] arr = {1, 2, 3, 4, 5};
+        Node root = arrayToList(arr);
+        System.out.println("The array is "+ Arrays.toString(arr));
+        display(root);
+    }
+}
