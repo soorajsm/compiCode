@@ -2,15 +2,9 @@ class Solution {
     public String addSpaces(String s, int[] spaces) {
         StringBuilder sb=new StringBuilder(s);
         int j=0;
-        for(int i=0;i<sb.length();i++)
+        for(int i=0;i<spaces.length;i++)
         {
-            if(j>=spaces.length)
-                break;
-            if(i==spaces[j])
-            {
-                sb.insert(i+j," ");
-                j++;
-            }
+            sb.insert(spaces[i]+i," ");
         }
         return sb.toString();
     }
