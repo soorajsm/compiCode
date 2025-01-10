@@ -7,15 +7,9 @@ class Solution {
         {
             freq=new byte[26];
             for(char c:s.toCharArray())
-                freq[c-'a']++;
-            boolean set[]=new boolean[26];
-            for(char c:s.toCharArray())
             {
-                if(set[c-'a']==false)
-                {
-                    max[c-'a']=(byte)Math.max(max[c-'a'],freq[c-'a']);
-                    set[c-'a']=true;
-                }
+                freq[c-'a']++;
+                max[c-'a']=(byte)Math.max(max[c-'a'],freq[c-'a']);
             }
         }
 
