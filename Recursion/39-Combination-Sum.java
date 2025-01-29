@@ -21,7 +21,7 @@ class Solution {
         list.add(a[i]);
         backtrack(a,t-a[i],i,list);
 
-        list.remove(Integer.valueOf(a[i]));
+        list.remove(list.size()-1);
         backtrack(a,t,i+1,list);
     }
 }
