@@ -1,3 +1,5 @@
+
+// Using Dynamic programming; Tabulation
 class Solution {
     public int fib(int i) {
     if(i<=1)
@@ -21,7 +23,7 @@ class Solution {
 
 
 
-// // Using Dynamic programming;
+// // Using Dynamic programming; Memotization
 
 // class Solution {
 //     public int fib(int n) {
